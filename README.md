@@ -1,73 +1,126 @@
-# Welcome to your Lovable project
+# Qubitedge – Precision Manufacturing & Engineering Solutions
 
-## Project info
+Qubitedge provides end-to-end manufacturing and engineering services focused on precision, quality, and performance. We support industries with reliable solutions ranging from design and machining to assembly and quality inspection.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Services We Provide
 
-## How can I edit this code?
+- Manufacturing
+- Machining
+- Assembly
+- Designing
+- Inspection (QA/QC)
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## Manufacturing
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### Precision Manufacturing Solutions Built for Performance
 
-Changes made via Lovable will be committed automatically to this repo.
+At Qubitedge, we deliver complete manufacturing solutions focused on accuracy, consistency, and reliability. Our services support prototype development, small batch production, and scalable manufacturing based on customer requirements.
 
-**Use your preferred IDE**
+We specialize in producing custom mechanical components based on customer drawings, specifications, and functional needs.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+**Capabilities:**
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Precision machining
+- Custom component manufacturing
+- Fabrication and assembly
+- Tooling, jigs, and fixtures
+- Reverse engineering and value engineering
+- Surface finishing and post-processing
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Machining
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Precision Machining for High-Performance Components
 
-# Step 3: Install the necessary dependencies.
-npm i
+Qubitedge offers high-precision machining services for critical mechanical parts requiring tight tolerances and high surface finishes. Our machining processes ensure dimensional accuracy and repeatability for both development and production needs.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+We work with a wide range of materials including metals and engineering plastics.
 
-**Edit a file directly in GitHub**
+**Capabilities:**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- CNC turning
+- CNC milling
+- Combined turning and milling
+- Machining of various materials
+- Precision quality control
+- Prototype to production machining
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Assembly
 
-## What technologies are used for this project?
+### Integrated Mechanical Assembly Solutions
 
-This project is built with:
+We provide precision mechanical assembly services that convert individual parts into fully functional sub-assemblies and complete assemblies. Our controlled assembly processes ensure reliability, accuracy, and consistent quality.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+We support both in-house manufactured parts and customer-supplied components.
 
-## How can I deploy this project?
+**Capabilities:**
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+- Mechanical sub-assemblies
+- Complete mechanical assemblies
+- Machined and fabricated assembly integration
+- Assembly quality control
+- Assembly for manufacturing and maintenance
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## Designing
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Engineering-Driven Design Solutions
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Our design services form the foundation of reliable manufacturing. We support customers with mechanical design solutions that connect concept, performance, and manufacturability.
+
+Our approach focuses on functionality, cost efficiency, quality standards, and production readiness.
+
+**Capabilities:**
+
+- 2D and 3D CAD modeling
+- Design for manufacturability
+- Reverse engineering
+- Design modification and optimization
+- Design validation and documentation
+- Design support across product lifecycle
+
+---
+
+## Inspection (QA/QC)
+
+### Precision Inspection for Assured Quality
+
+Quality inspection is an integral part of our manufacturing process. We ensure every component and assembly meets required dimensions, functionality, and quality standards before delivery.
+
+Our inspection practices focus on accuracy, traceability, and consistency.
+
+**Capabilities:**
+
+- Incoming material inspection
+- In-process inspection
+- Final inspection
+- Quality documentation and reports
+- Inspection for components and assemblies
+- Comprehensive quality assurance approach
+
+---
+
+## Our Commitment
+
+At Qubitedge, we are committed to delivering:
+
+- High precision and consistency
+- Reliable manufacturing solutions
+- Strong quality control
+- Customer-focused engineering support
+
+We aim to build long-term partnerships by delivering performance-driven solutions across the manufacturing lifecycle.
+
+---
+
+## Contact
+
+For inquiries, collaborations, or project discussions, feel free to reach out.
+
+---
