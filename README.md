@@ -1,3 +1,12 @@
+<p align="center">
+  <img src="Qubitedge.png" alt="Qubitedge Logo" width="180"/>
+</p>
+
+<h1 align="center">Qubitedge</h1>
+<p align="center">Precision Manufacturing & Engineering Solutions</p>
+
+---
+
 # Qubitedge – Precision Manufacturing & Engineering Solutions
 
 Qubitedge provides end-to-end manufacturing and engineering services focused on precision, quality, and performance. We support industries with reliable solutions ranging from design and machining to assembly and quality inspection.
