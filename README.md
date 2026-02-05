@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/mechtest/public/Qubitede.png" alt="Qubitedge Logo" width="180"/>
+  <img src="/mechtest/public/Qubitedge.png" alt="Qubitedge Logo" width="180"/>
 </p>
 
 <h1 align="center">Qubitedge</h1>
