@@ -140,5 +140,3 @@ export const Footer = () => {
     </footer>
   );
 };
-
-className = "hover:text-primary-foreground transition-colors";
