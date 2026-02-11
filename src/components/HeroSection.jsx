@@ -83,10 +83,10 @@ export const HeroSection = () => {
             <Button
               size="lg"
               variant="outline"
-              onClick={() => scrollToSection("#courses")}
+              onClick={() => scrollToSection("#contact")}
               className="border-2 border-primary-foreground text-primary hover:bg-primary-foreground/10 font-semibold px-8 py-6 text-base"
             >
-              View Courses
+              Contact Us
             </Button>
           </div>
         </div>

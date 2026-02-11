@@ -13,12 +13,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Send, CheckCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const OrderSection = () => {
   const sectionRef = useRef(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     companyName: "",
     productName: "",
@@ -62,10 +64,50 @@ export const OrderSection = () => {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setIsLoading(true);
+
+    try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error(
+          "EmailJS configuration is missing. Please check your environment variables before proceeding",
+        );
+      }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          companyName: formData.companyName,
+          productName: formData.productName,
+          description: formData.description,
+          credentials: formData.credentials,
+          requirements: formData.requirements,
+          time: new Date().toLocaleString(),
+        },
+        publicKey,
+      );
+
+      setIsSubmitted(true);
+      setFormData({
+        companyName: "",
+        productName: "",
+        description: "",
+        credentials: "",
+        requirements: "",
+      });
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (err) {
+      alert("Failed to send message. Please try again later.");
+      console.log("Failed to send message. Please try again later", err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -146,8 +188,9 @@ export const OrderSection = () => {
                   <Textarea
                     id="description"
                     name="description"
+                    rows={4}
                     placeholder="Describe the product, including dimensions, tolerances, materials, and any specific requirements..."
-                    className="input-industrial min-h-[120px]"
+                    className="input-industrial min-h-[120px] resize-none"
                     value={formData.description}
                     onChange={handleChange}
                     required
@@ -160,8 +203,9 @@ export const OrderSection = () => {
                   <Textarea
                     id="credentials"
                     name="credentials"
+                    rows={3}
                     placeholder="Your name, email, phone number, and any relevant company credentials or certifications..."
-                    className="input-industrial min-h-[100px]"
+                    className="input-industrial min-h-[100px] resize-none"
                     value={formData.credentials}
                     onChange={handleChange}
                     required
@@ -174,8 +218,9 @@ export const OrderSection = () => {
                   <Textarea
                     id="requirements"
                     name="requirements"
+                    rows={3}
                     placeholder="Quantity, delivery timeline, packaging requirements, quality standards, or any other special instructions..."
-                    className="input-industrial min-h-[100px]"
+                    className="input-industrial min-h-[100px] resize-none"
                     value={formData.requirements}
                     onChange={handleChange}
                   />
@@ -183,9 +228,38 @@ export const OrderSection = () => {
                 <Button
                   type="submit"
                   className="btn-industrial w-full md:w-auto gap-2"
+                  disabled={isLoading}
                 >
-                  <Send className="w-4 h-4" />
-                  Submit Order Request
+                  {isLoading ? (
+                    <>
+                      <svg
+                        className="animate-spin h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                        />
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Submit Order Request
+                    </>
+                  )}
                 </Button>
               </form>
             )}

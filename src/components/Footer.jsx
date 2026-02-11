@@ -1,4 +1,5 @@
 import { Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const footerLinks = {
   services: [
@@ -7,18 +8,15 @@ const footerLinks = {
     { name: "Assembly", href: "#services" },
     { name: "Designing", href: "#services" },
     { name: "Inspection (QA/QC)", href: "#services" },
+    { name: "Fabrication", href: "#services" },
   ],
   company: [
     { name: "About Us", href: "#about" },
-    { name: "Our Team", href: "#about" },
-    { name: "Careers", href: "#" },
-    { name: "News", href: "#" },
+    { name: "Our Team", href: "#team" },
   ],
   resources: [
-    { name: "Courses", href: "#courses" },
     { name: "Order Form", href: "#order" },
     { name: "Contact", href: "#contact" },
-    { name: "FAQs", href: "#" },
   ],
 };
 
@@ -52,11 +50,11 @@ export const Footer = () => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
             >
-              Qubitedge<span className="text-accent">.</span>
+              qubitedge<span className="text-accent">.</span>
             </a>
             <p className="text-primary-foreground/80 leading-relaxed mb-6 max-w-sm">
               Precision engineering and manufacturing solutions for your most
-              demanding projects. Qubitedge is your trusted partner for quality
+              demanding projects. qubitedge is your trusted partner for quality
               and consistency.
             </p>
             <div className="flex gap-4">
@@ -120,30 +118,27 @@ export const Footer = () => {
         </div>
         <div className="border-t border-primary-foreground/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-primary-foreground/60 text-sm">
-            © {new Date().getFullYear()} Qubitedge. All rights reserved.
+            © {new Date().getFullYear()} qubitedge. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-primary-foreground/60">
-            <a
-              href="#"
+            <Link
+              to="/privacy-policy"
               className="hover:text-primary-foreground transition-colors"
             >
               Privacy Policy
-            </a>
-            <a
-              href="#"
+            </Link>
+
+            <Link
+              to="/terms-of-service"
               className="hover:text-primary-foreground transition-colors"
             >
               Terms of Service
-            </a>
-            <a
-              href="#"
-              className="hover:text-primary-foreground transition-colors"
-            >
-              Cookie Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>
     </footer>
   );
 };
+
+className = "hover:text-primary-foreground transition-colors";

@@ -5,9 +5,8 @@ import { Button } from "@/components/ui/button";
 const navLinks = [
   { name: "Services", href: "#services" },
   { name: "About", href: "#about" },
-  { name: "Courses", href: "#courses" },
-  { name: "Order", href: "#order" },
   { name: "Contact", href: "#contact" },
+  { name: "Team", href: "#team" },
 ];
 
 export const Navbar = () => {
@@ -19,7 +18,6 @@ export const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -45,13 +43,17 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <a
             href="#"
-            className="font-serif text-xl md:text-2xl font-bold text-primary"
+            className="flex items-center"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            Qubitedge<span className="text-accent">.</span>
+            <img
+              src="/Qubit_full_logo.png"
+              alt="qubitedge"
+              className="w-40 h-40"
+            />
           </a>
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -69,7 +71,7 @@ export const Navbar = () => {
               onClick={() => scrollToSection("#order")}
               className="btn-industrial"
             >
-              Get Quote
+              Order Now
             </Button>
           </div>
           <button

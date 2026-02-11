@@ -1,7 +1,17 @@
+// Add Fabrication card later in this section
+
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Cog, Factory, Wrench, Truck, Shield, Settings } from "lucide-react";
+import {
+  Cog,
+  Factory,
+  Wrench,
+  Shield,
+  Settings,
+  Hammer,
+  Layers,
+} from "lucide-react";
 import {
   Card,
   CardContent,
@@ -42,6 +52,12 @@ const services = [
     title: "Inspection (QA/QC)",
     description:
       "Comprehensive quality assurance—material, in-process and final inspection, reports and documentation, and quality audits.",
+  },
+  {
+    icon: Layers,
+    title: "Fabrication",
+    description:
+      "Expert fabrication services for metal and custom parts, delivering precise assemblies with fast turnaround.",
   },
 ];
 

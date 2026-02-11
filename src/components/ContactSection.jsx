@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, MapPin, Phone, Send, Star, Quote } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,6 +37,8 @@ const testimonials = [
 
 export const ContactSection = () => {
   const sectionRef = useRef(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -92,9 +95,45 @@ export const ContactSection = () => {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Contact form submitted:", formData);
+    setIsLoading(true);
+
+    try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_2;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error(
+          "EmailJS configuration is missing. Please check your environment variables before proceeding",
+        );
+      }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        publicKey,
+      );
+
+      setIsSubmitted(true);
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (err) {
+      alert("Failed to send message. Please try again.");
+      console.log("Failed to send message. Please try again later.", err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -153,13 +192,13 @@ export const ContactSection = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-foreground mb-1">
-                    Call Us
+                    Graham Stains
                   </div>
                   <a
-                    href="tel:+1-555-123-4567"
+                    href="tel:+916281791230"
                     className="text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    +1 (555) 123-4567
+                    +91 6281791230
                   </a>
                 </div>
               </div>
@@ -182,49 +221,97 @@ export const ContactSection = () => {
           </div>
           <Card className="contact-form card-industrial">
             <CardContent className="pt-6">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name *</Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    placeholder="Your full name"
-                    className="input-industrial"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                  />
+              {isSubmitted ? (
+                <div className="flex flex-col items-center justify-center py-8 text-center">
+                  <Quote className="w-10 h-10 text-accent mb-2" />
+                  <h4 className="font-serif text-lg text-foreground mb-1">
+                    Message Sent!
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Thank you for reaching out to us. We will get back to you
+                    soon.
+                  </p>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="your@email.com"
-                    className="input-industrial"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message *</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Tell us about your project or inquiry..."
-                    className="input-industrial min-h-[120px]"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <Button type="submit" className="btn-industrial w-full gap-2">
-                  <Send className="w-4 h-4" />
-                  Send Message
-                </Button>
-              </form>
+              ) : (
+                <>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Name *</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        placeholder="Your full name"
+                        className="input-industrial"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email *</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="your@email.com"
+                        className="input-industrial"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Message *</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        rows={4}
+                        placeholder="Tell us about your project or inquiry..."
+                        className="input-industrial min-h-[120px] resize-none"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <Button
+                      type="submit"
+                      className="btn-industrial w-full gap-2"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? (
+                        <>
+                          <svg
+                            className="animate-spin h-5 w-5 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            />
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                            />
+                          </svg>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4" />
+                          Send Message
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                </>
+              )}
             </CardContent>
           </Card>
         </div>
